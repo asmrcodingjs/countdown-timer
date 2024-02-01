@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700;800&display=swap");
+
+body {
+  font-family: "Baloo Tamma 2";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(16, 19, 49, 1) 0%,
+    rgba(23, 22, 52, 1) 50%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(254, 254, 254, 1) 100%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.launch-text {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 20px;
+  color: #cfcfd2;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: blurAnimation 1s infinite;
+}
+
+@keyframes blurAnimation {
+  0%,
+  100% {
+    color: #cfcfd2;
+    filter: blur(0px);
+  }
+
+  50% {
+    color: #fff;
+    filter: blur(2px);
+  }
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 9px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  gap: 20px;
+}
+
+.time {
+  text-align: center;
+  margin: 0 10px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #888;
+  transition: all 0.1s ease;
+}
+
+.time::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #888;
+  margin-top: -7px;
+  transform: scaleX(0);
+  transition: all 0.1s step-end 0s;
+  animation: scalexAnimation 1s infinite ease-in;
+}
+
+/* animation */
+
+.time#days::before {
+  animation: scalexAnimation 86400s infinite ease-in;
+}
+
+.time#hours::before {
+  animation: scalexAnimation 36000s infinite ease-in;
+}
+
+.time#minutes::before {
+  animation: scalexAnimation 60s infinite ease-in;
+}
+
+.time#seconds::before {
+  animation: scalexAnimation 1s infinite ease-in;
+}
+
+@keyframes scalexAnimation {
+  0%,
+  100% {
+    transform: scaleX(0);
+  }
+
+  50% {
+    transform: scaleX(1);
+  }
+}
+
+.label {
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #888;
+}
